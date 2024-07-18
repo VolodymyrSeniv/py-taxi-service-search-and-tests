@@ -55,7 +55,7 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
         if form.is_valid():
             return self.model.objects.filter(
                 name__icontains=form.cleaned_data["name"]
-                )
+            )
         return self.queryset
 
 

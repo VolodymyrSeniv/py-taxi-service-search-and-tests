@@ -35,4 +35,4 @@ class ModelsTests(TestCase):
                                        last_name="TestLastName"
                                        )
         driver = Driver.objects.get(id=1)
-        self.assertEqual(driver.get_absolute_url(), '/drivers/1/')
+        self.assertEqual(driver.get_absolute_url(), "/drivers/1/")
