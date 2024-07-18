@@ -8,7 +8,8 @@ class ModelsTests(TestCase):
     def test_manufacturer_str(self):
         manufacturer = Manufacturer.objects.create(name="TestName",
                                                    country="TestCountry")
-        self.assertEqual(str(manufacturer), f"{manufacturer.name} {manufacturer.country}")
+        self.assertEqual(str(manufacturer),
+                         f"{manufacturer.name} {manufacturer.country}")
 
     def test_driver_str(self):
         driver = Driver.objects.create(username="TestUserName",
@@ -16,7 +17,8 @@ class ModelsTests(TestCase):
                                        last_name="TestLastName"
                                        )
         self.assertEqual(str(driver),
-                         f"{driver.username} ({driver.first_name} {driver.last_name})")
+                         f"{driver.username} "
+                         f"({driver.first_name} {driver.last_name})")
 
     def test_car_str(self):
         manufacturer = Manufacturer.objects.create(name="TestName",
@@ -26,12 +28,11 @@ class ModelsTests(TestCase):
                                  )
         self.assertEqual(str(car),
                          car.model)
-    
+
     def test_get_driver_absolute_url(self):
         driver = Driver.objects.create(username="TestUserName",
                                        first_name="TestFirstName",
                                        last_name="TestLastName"
                                        )
         driver = Driver.objects.get(id=1)
-        # This will also fail if the urlconf is not defined.
         self.assertEqual(driver.get_absolute_url(), '/drivers/1/')
